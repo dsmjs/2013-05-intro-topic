@@ -15,4 +15,23 @@ Padawan = (function() {
     return padawan;
 }());
 
+Jedi = (function() {
+    var jedi = function(name, age) {
+        Padawan.call(this, name, age);
+    };
+
+    jedi.prototype = Object.create(Padawan.prototype);
+
+    jedi.prototype.forceAttuned = function() {
+        return true;
+    };
+
+    jedi.prototype.lightsaberColor = function() {
+        return "blue";
+    };
+
+    return jedi;
+}());
+
 var anakin = new Padawan("Anakin", 9);
+var luke = new Jedi("Luke", 29);
