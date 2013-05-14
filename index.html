@@ -7,7 +7,23 @@
 
 <!-- HTML5 shim, for IE6-8 support of HTML elements -->
 <!--[if lt IE 9]>
-<script src="es5-shim.min.js"></script>
+<script type="text/javascript">
+var createObject = function (o) {
+  // we only want the prototype part of the `new`
+  // behavior, so make an empty constructor
+  function F() {}
+ 
+  // set the function's `prototype` property to the
+  // object that we want the new object's prototype
+  // to be.
+  F.prototype = o;
+ 
+  // use the `new` operator. We will get a new
+  // object whose prototype is o, and we will
+  // invoke the empty function, which does nothing.
+  return new F();
+};
+</script>
 <![endif]-->
 <script src="app.js"></script>
 </body>
