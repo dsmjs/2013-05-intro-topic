@@ -21,6 +21,9 @@ Jedi = (function() {
     };
 
     jedi.prototype = Object.create(Padawan.prototype);
+    jedi.prototype.constructor = jedi;
+    //without the above jedi will claim to
+    //have been constructed by Padawan
 
     jedi.prototype.forceAttuned = function() {
         return true;
