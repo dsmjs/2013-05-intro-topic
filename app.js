@@ -21,9 +21,12 @@ Jedi = (function() {
     };
 
     jedi.prototype = Object.create(Padawan.prototype);
+
     jedi.prototype.constructor = jedi;
     //without the above jedi will claim to
     //have been constructed by Padawan
+    //for more information see my stackoverflow question
+    //http://stackoverflow.com/questions/16547633/how-to-show-the-delegated-constructor-reference-issue-in-javascript/16548050
 
     jedi.prototype.forceAttuned = function() {
         return true;
