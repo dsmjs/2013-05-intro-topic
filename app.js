@@ -1,4 +1,4 @@
-Padawan = (function() {
+var Padawan = (function() {
     var padawan = function(name, age) {
         this.name = name;
         this.age = age;
@@ -15,7 +15,7 @@ Padawan = (function() {
     return padawan;
 }());
 
-Jedi = (function() {
+var Jedi = (function() {
     var jedi = function(name, age) {
         Padawan.call(this, name, age);
     };
@@ -39,5 +39,23 @@ Jedi = (function() {
     return jedi;
 }());
 
+var DarkJedi = (function() {
+    var evil = function(name, age) {
+        Jedi.call(this, name, age);
+    };
+
+    evil.prototype = Object.create(Jedi.prototype);
+    evil.prototype.constructor = evil;
+
+    evil.prototype.skill = function() {
+        return Jedi.prototype.skill.call(this) + 99;
+        //with the above dark jedi can call the jedi
+        //skill method and extend it (like a super of sorts)
+    };
+
+    return evil;
+}());
+
 var anakin = new Padawan("Anakin", 9);
 var luke = new Jedi("Luke", 29);
+var vader = new DarkJedi("Vader", 99);
